@@ -1,0 +1,17 @@
+{
+  "Shapes": [
+    {
+      "Radius": 5,
+      "Shape": "circle"
+    },
+    {
+      "Radius": 7,
+      "Shape": "circle"
+    },
+    {
+      "Width": 4,
+      "Height": 3,
+      "Shape": "rectangle"
+    }
+  ]
+}
