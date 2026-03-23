@@ -55,23 +55,23 @@ type Priortizer interface {
 	Label() string
 }
 
-type PriortyNormal struct{}
+type PriorityNormal struct{}
 
-func (p PriortyNormal) Label() string {
+func (p PriorityNormal) Label() string {
 	return "normal"
 }
 
-func (p PriortyNormal) MarshalJSON() ([]byte, error) {
+func (p PriorityNormal) MarshalJSON() ([]byte, error) {
 	return json.Marshal(p.Label())
 }
 
-type PriortyUrgent struct{}
+type PriorityUrgent struct{}
 
-func (p PriortyUrgent) Label() string {
+func (p PriorityUrgent) Label() string {
 	return "urgent"
 }
 
-func (p PriortyUrgent) MarshalJSON() ([]byte, error) {
+func (p PriorityUrgent) MarshalJSON() ([]byte, error) {
 	return json.Marshal(p.Label())
 }
 
@@ -110,9 +110,9 @@ func (t *Task) UnmarshalJSON(data []byte) error {
 	// set priority type explicitly
 	switch helper.Priority {
 	case "urgent":
-		t.Priority = PriortyUrgent{}
+		t.Priority = PriorityUrgent{}
 	case "normal":
-		t.Priority = PriortyNormal{}
+		t.Priority = PriorityNormal{}
 	default:
 		return fmt.Errorf("unknown priority: %s", helper.Priority)
 	}
@@ -179,9 +179,9 @@ func addTask(title, priority string) error {
 	var p Priortizer
 	switch priority {
 	case "urgent":
-		p = PriortyUrgent{}
+		p = PriorityUrgent{}
 	case "normal":
-		p = PriortyNormal{}
+		p = PriorityNormal{}
 	default:
 		return fmt.Errorf("unknown priority: %s", priority)
 	}
