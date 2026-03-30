@@ -52,3 +52,21 @@ type Task struct {
 	Priority Priortizer // -> can be now PriorityNormal type because it's implementing the interface
 }
 ```
+
+## Strings
+
+- []bytes
+- indexings yiels bytes not char/rune
+
+- strings: arbitrary bytes
+- string literals: always contain UTF-8
+
+- `range`-loop: encode one rune each iteration -> so not by index
+
+## Codepoint and Rune
+
+- codepoint: unicode standard - refer to item presented by single value
+- rune: alias to `int32`
+- can be thought as character
+
+`len(string) = Bytes AND IS NOT len([]rune(string)) = chars`
