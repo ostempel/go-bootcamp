@@ -1,0 +1,5 @@
+2025-03-15 10:23:45 ERROR database connection failed
+2025-03-15 10:23:46 INFO user logged in
+2025-03-15 10:23:47 WARN disk usage at 85%
+2025-03-15 10:24:01 ERROR timeout reaching payment service
+2025-03-15 10:24:02 INFO request processed
