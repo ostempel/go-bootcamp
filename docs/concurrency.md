@@ -13,9 +13,27 @@
 
 ## Channels
 - buffered channels: `messages := make(chan T, size)` -> now how many messages/goroutines are spawned
+- unbuffered channels: sender **blocks** till somebody reads -> in same gorutine **Deadlock**
+  - channel filled -> `close(c)`
 - `for range size`: gather results with `msg, ok := <- messages`
   - ok to test if closed
   - after size times of receiving channel gets close
 - `for range messages`:
   - get messages in channel
   - but **doesn't** close channel when all received
+
+## Worker pools
+- workers are own goroutines
+- goroutine sends jobs and closes job-channel
+- worker read job-channel and send results-channel
+- separate goroutine waits for workers done and closes results-channel
+- main reads results
+
+## Deadlocks
+- `wg.Wait()` of worker before reading -> worker can't send because nobody reads
+- `for range channel`: reads till channel **closed**
+
+**Avoid**:
+- send and receive in different goroutines (unbuffered)
+- filler of channel also closes
+- close result channel only after **all** worker are done -> wait and then close
