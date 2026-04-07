@@ -29,9 +29,18 @@
 - separate goroutine waits for workers done and closes results-channel
 - main reads results
 
-## Deadlocks
+### Deadlocks
 - `wg.Wait()` of worker before reading -> worker can't send because nobody reads
 - `for range channel`: reads till channel **closed**
+
+## Pipeline
+- Pattern: `func(<-chan T) <-chan T`
+- stages encapsulate own goroutine
+
+
+## Worker vs Pipeline
+- Pipeline: sequential transformation 
+- Worker: parallel processing
 
 **Avoid**:
 - send and receive in different goroutines (unbuffered)
