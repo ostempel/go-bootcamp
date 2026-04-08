@@ -37,6 +37,9 @@
 - Pattern: `func(<-chan T) <-chan T`
 - stages encapsulate own goroutine
 
+## Fan-Out/Fan-In
+- Fan-Out: goroutines read from same channel (distribute work like worker-poll) but have **own** result channel 
+- Fan-In: wait-group counts result channels, merge into one channel and close **after** waitgroup done 
 
 ## Worker vs Pipeline
 - Pipeline: sequential transformation 
